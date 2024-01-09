@@ -108,7 +108,7 @@ The very last word is:
 
 As we'd expect, I found it on the very right side, with the y positions where I marked 4.
 
-I presume after we reach the left most column, then we restart back at the right column and adjust the y positions according to the pattern we found earlier.
+I presume after we reach the left most column, then we restart back at the right column and adjust the y positions according to the pattern found earlier.
 
 Figuring out how to decode this ROM was quite tedius. It makes me respect people who do this kind of thing all the time.
 
