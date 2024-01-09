@@ -10,7 +10,7 @@ Following [this patent](https://patents.google.com/patent/US3934233) I already h
 
 ## Finding the ROM
 
-First, reading through the patent, I can divide the chip into sections:
+Reading through the patent, I can divide the chip into sections:
 
 ![Chip](chip.png)
 
