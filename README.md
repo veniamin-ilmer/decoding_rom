@@ -64,4 +64,40 @@ It might be a bit hard to see, so here I have highlighted the transistors:
 
 ![x axis highlighted](x_axis_highlighted.png)
 
-Here the first big clue. They divided up each address bit into 2. This way, 6 bits can neatly divide into 2^6 = 64 bits of space. Awesome!
+Here the first big clue. They divided up each address bit into 2. This way, 6 bits can neatly divide into 2^6 = 64 bits of space. Awesome! With this even division, we would expect this data to be in order. Perhaps it is different for the y axis?
+
+![y axis](y_axis.png)
+
+The y axis looks a bit different from the x axis. After highlighting the transistors, I found a pattern. Dividing it up into equal slices revealed 11 equal pieces.
+
+This further seems to reveal how the bits are ordered. Unlike the x axis, the y axis divides the bits into chunks of 5. Every other chunk is in reverse order.
+
+Let's divide up the ROM with this information:
+
+![ROM thin slices](rom_slices2.png)
+
+Perhaps this is how we can decode the ROM?
+
+## Decoding the first word
+
+I attempted to find the first word on either sides:
+
+    10110001111
+
+After a bit of trial and error, following the above patterns, I finally discovered the word on the right side.
+
+![Read first word](read_first.png)
+
+This 01001110000 is the exact inverse of the word we are looking for! We got it!
+
+## Conclusion
+
+In case you are wondering, the second word is:
+
+    10101111111
+
+I found it the same way as the first, in the same y positions, but the x address shifted over 1 to the left.
+
+I presume after we reach the left most column, then we restart back at the right column and adjust the y positions according to the pattern we found earlier.
+
+Figuring out how to decode this ROM was quite tedius. It makes me respect people who do this kind of thing all the time.
