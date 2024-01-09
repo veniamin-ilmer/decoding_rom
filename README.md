@@ -4,7 +4,7 @@ The TMS0801, from 1972, was one of the first chips to completely contain everyth
 
 It contained the CPU, RAM, and ROM, all on one chip.
 
-Inspired by [Ken Shirriff](http://files.righto.com/calculator/sinclair_scientific_simulator.html) reading from a similar chip, I decided to try and see I can read the ROM data by simply looking at a zoomed in photo of the chip.
+Inspired by [Ken Shirriff](http://files.righto.com/calculator/sinclair_scientific_simulator.html) reading from a similar chip, I decided to try and see I can read the ROM data by simply looking at a photo of the chip.
 
 Following [this patent](https://patents.google.com/patent/US3934233) I already had an idea of the ROM contents already. I found John McMaster had decapped and [imaged the chip in great detail](https://siliconpr0n.org/map/ti/tms0801nc/mcmaster_mz_mit20x/), so I thought, this shouldn't be hard, right?
 
