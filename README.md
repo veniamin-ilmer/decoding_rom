@@ -1,4 +1,4 @@
-# Decoding the TMS0801 ROM
+# Optically Decoding the TMS0801 ROM
 
 The TMS0801, from 1972, was one of the first chips to completely contain everything to need to run a calculator. It was used to power the [Sinclair Cambridge](https://en.wikipedia.org/wiki/Sinclair_Cambridge).
 
