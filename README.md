@@ -64,7 +64,9 @@ It might be a bit hard to see, so here I have highlighted the transistors:
 
 ![x axis highlighted](x_axis_highlighted.png)
 
-Here the first big clue. They divided up each address bit into 2. This way, 6 bits can neatly divide into 2^6 = 64 bits of space. Awesome! With this even division, we would expect this data to be in order. Perhaps it is different for the y axis?
+Here the first big clue. They divided up each address bit into 2. This way, 6 bits can neatly divide into 2^6 = 64 bits of space. Awesome! With this even division, we would expect this data to be in order.
+
+Perhaps it is different for the y axis?
 
 ![y axis](y_axis.png)
 
@@ -92,12 +94,22 @@ This 01001110000 is the exact inverse of the word we are looking for! We got it!
 
 ## Conclusion
 
+I checked a few more words.
+
 In case you are wondering, the second word is:
 
     10101111111
 
 I found it the same way as the first, in the same y positions, but the x address shifted over 1 to the left.
 
+The very last word is:
+
+    00000000000
+
+As we'd expect, I found it on the very right side, with the y positions where I marked 4.
+
 I presume after we reach the left most column, then we restart back at the right column and adjust the y positions according to the pattern we found earlier.
 
 Figuring out how to decode this ROM was quite tedius. It makes me respect people who do this kind of thing all the time.
+
+I look forward to emulating this chip some time soon.
