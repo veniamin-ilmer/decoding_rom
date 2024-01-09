@@ -101,3 +101,5 @@ I found it the same way as the first, in the same y positions, but the x address
 I presume after we reach the left most column, then we restart back at the right column and adjust the y positions according to the pattern we found earlier.
 
 Figuring out how to decode this ROM was quite tedius. It makes me respect people who do this kind of thing all the time.
+
+I look forward to emulating this chip some time soon.
