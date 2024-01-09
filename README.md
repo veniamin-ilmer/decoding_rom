@@ -42,7 +42,7 @@ I manually counted how many of these little rectangles can fit per column and ro
 
 The ROM chip looks like a 64x60 grid of data. That's our first problem. You see, there are supposed to be 3520 bits of data total, but 64 &times; 60 = 3840 bits.
 
-Upon closer inspection, I realized every 11th row is empty. So the ROM can be divided into slices every 10th row:
+Upon closer inspection, I realized every 11th row is empty. So the ROM can be divided into slices every 11th row:
 
 ![ROM slices](rom_slices.png)
 
