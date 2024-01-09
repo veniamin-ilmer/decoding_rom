@@ -106,7 +106,7 @@ The very last word is:
 
     00000000000
 
-As we'd expect, I found it on the very right side, with the y positions where I marked 4.
+As we'd expect, I found it on the very left side, with the y positions where I marked 4.
 
 I presume after we reach the left most column, then we restart back at the right column and adjust the y positions according to the pattern found earlier.
 
