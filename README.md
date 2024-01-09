@@ -1,12 +1,14 @@
 # Decoding the TMS0801 ROM
 
-The TMS0801, from 1974, was one of the first chips to completely contain everything to need to run a calculator.
+The TMS0801, from 1972, was one of the first chips to completely contain everything to need to run a calculator. It was used to power the [Sinclair Cambridge](https://en.wikipedia.org/wiki/Sinclair_Cambridge).
 
 It contained the CPU, RAM, and ROM, all on one chip.
 
 Inspired by [Ken Shirriff](http://files.righto.com/calculator/sinclair_scientific_simulator.html) reading from a similar chip, I decided to try and see I can read the ROM data by optically copying it off the chip directly.
 
 Following [this patent](https://patents.google.com/patent/US3934233) I already had an idea of the ROM contents already. I found John McMaster had decapped and [imaged the chip in great detail](https://siliconpr0n.org/map/ti/tms0801nc/mcmaster_mz_mit20x/), so I thought, this shouldn't be hard, right?
+
+## Finding the ROM
 
 First, reading through the patent, I can divide the chip into sections:
 
@@ -16,12 +18,50 @@ Here is the ROM:
 
 ![ROM](rom.png)
 
-Here is what the ROM looks like close up:
+Here is what the ROM bits look like close up:
 
 ![ROM closeup](rom_close.png)
 
 The rectangles on top of the metal are transistors. Containing or lacking a transistor, reveals the 1s and 0s of the data.
 
-The ROM chip is looks like a 64x60 grid of data. That's our first problem. You see, there are supposed to be 3520 bits of data total, but 64 &times; 60 = 3840 bits.
+## Finding the bits
 
-Upon closer inspection, I realized every 11th row is empty:
+So now, how can we read this data? Does it start on the left or right side? Bottom or top? Do I read it horizontally or vertically?
+
+This chip is actually unusual because rather than using 8 bit bytes, each instruction was 11 bits long. Reading from the patent, the very first instruction is supposed to be:
+
+    10110001111
+
+With no better ideas, I decided to try and just look on the top, bottom, left, and right sides of the ROM to see if I can find that pattern of 1s and 0s. I also tried reading it backwards, or inverting the 0s and 1s.
+
+Despite my efforts, I was not able to find this pattern. It was also a bit disheartening, realizing 11 bits of instructions actually didn't seem to fit neatly within the grid.
+
+## Checking the total bits
+
+I manually counted how many of these little rectangles can fit per column and row.
+
+The ROM chip looks like a 64x60 grid of data. That's our first problem. You see, there are supposed to be 3520 bits of data total, but 64 &times; 60 = 3840 bits.
+
+Upon closer inspection, I realized every 11th row is empty. So the ROM can be divided into slices every 10th row:
+
+![ROM slices](rom_slices.png)
+
+Ok, now we have a 64x55 grid of data, which is great, because 64 &times; 55 = 3520 bits.
+
+Also, 55 divides 11 bits evenly. Great! So maybe there are 5 instructions per column!
+
+Unfortunately, even after slicing the rom into these sections, I still couldn't find the first instruction "10110001111" anywhere along the sides of the ROM.
+
+## Ordering of data
+
+Out of ideas, [I asked on reddit](https://old.reddit.com/r/EmuDev/comments/191ompm/how_do_you_read_a_rom_visually_inspecting_the/) to see if they have any ideas how to decode the ROM. /u/TheThiefMaster provided some very good insight.
+
+In order to read the ROM, the chip needs to reference any part of it via the x and y axis. The chip does this by having x and y address registers on the sides of the ROM. Here is the X address register:
+
+![x axis](x_axis.png)
+
+It might be a bit hard to see, so here I have highlighted the transistors:
+
+![x axis highlighted](x_axis_highlighted.png)
+
+Here the first big clue. They divided up each address bit into 2. This way, 6 bits can neatly divide into 2^6 = 64 bits of space. Awesome!
