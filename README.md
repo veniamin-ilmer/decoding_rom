@@ -54,7 +54,7 @@ Unfortunately, even after slicing the rom into these sections, I still couldn't 
 
 ## Ordering of data
 
-Out of ideas, [I asked on reddit](https://old.reddit.com/r/EmuDev/comments/191ompm/how_do_you_read_a_rom_visually_inspecting_the/) to see if they have any ideas how to decode the ROM. /u/TheThiefMaster provided some very good insight.
+Out of ideas, [I asked on reddit](https://old.reddit.com/r/EmuDev/comments/191ompm/how_do_you_read_a_rom_visually_inspecting_the/) to see if they have any ideas how to decode the ROM. [/u/TheThiefMaster](https://old.reddit.com/user/TheThiefMaster) provided some very good insight.
 
 In order to read the ROM, the chip needs to reference any part of it via the x and y axis. The chip does this by having x and y address registers on the sides of the ROM. Here is the X address register:
 
