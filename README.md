@@ -112,9 +112,7 @@ I presume after we reach the left most column, then we restart back at the right
 
 Figuring out how to decode this ROM was quite tedius. It makes me respect people who do this kind of thing all the time.
 
-I look forward to emulating this chip some time soon.
-
-In the meantime, I wrote up this script to convert rows into data:
+I wrote up this script to convert rows into data:
 
     fn get_word(addr: u16) -> u16 {
         let addr_high = addr >> 6;
@@ -141,3 +139,7 @@ In the meantime, I wrote up this script to convert rows into data:
         let bit0 = (!(ROM[50 + y1] >> x_addr) & 0b1) as u16;
         (bita << 10) + (bit9 << 9) + (bit8 << 8) + (bit7 << 7) + (bit6 << 6) + (bit5 << 5) + (bit4 << 4) + (bit3 << 3) + (bit2 << 2) + (bit1 << 1) + bit0
     }
+
+## Emulation
+
+I built an emulator that uses this decoded ROM. Check out the [Sinclair Cambridge Emulator](https://veniamin-ilmer.github.io/sinclair_cambridge/)
